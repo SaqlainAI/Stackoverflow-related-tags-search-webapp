@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<style>
+@import "http://fonts.googleapis.com/css?family=Ubuntu";
+body{
+margin:0;
+padding:0;
+font-family:'Ubuntu',sans-serif
+}
+#first{
+width:400px;
+height:610px;
+box-shadow:0 0 15px rgba(14,41,57,0.12),0 2px 5px rgba(14,41,57,0.44),inset 0 -1px 2px rgba(14,41,57,0.15);
+float:left;
+padding:10px 50px 0;
+margin:2% 30%;
+border-radius:5px
+}
+hr{
+border-top:1px solid #ccc;
+margin-bottom:30px
+}
+span{
+float:left;
+margin-top:8px;
+font-size:17px
+}
+.one{
+display:block;
+margin-left:22px;
+margin-top:10px
+}
+.submit{
+width:100px;
+margin-left:83px;
+padding:10px;
+margin-top:20px;
+background:linear-gradient(#A4A4A4,#424242);
+color:#fff;
+font-weight:700
+}
+.submit:hover{
+background:linear-gradient(#424242,#A4A4A4)
+}
+.result {
+    margin: auto;
+    width: 80%;
+    border: 2px solid #ccc;
+}
+</style>
+<head>
+    <title>Stackoverflow related tags search </title>
+</head>
+<body>
+<div id = "first">
+<form action="https://related-tag-search.herokuapp.com/" method="POST">
+	<h2 align="center">Stackoverflow related tags search</h2>
+	<h4>Please enter the tag</h4>
+	<label class = "one">
+        <span>Tag :</span>&nbsp;
+        <input name="Tag" type="text" required>
+    </label>
+        <br>
+        <input type="submit" value="Get Related Tags">
+    </form>
+
+<div class="result" >
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+           <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <p style="font-size:20px" >Related Tags :</p>
+           
+         {% for variable in result %}
+            <p style="font-size:15px" align="center">{{ variable }}</p>
+         {% endfor %}
+         {% endif %}    
+</div>
+</div>
+</body>
+</html>
